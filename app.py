@@ -24,6 +24,23 @@ def index():
 def courses_index():
     return render_template('courses/index.html', courses=courses)
 
+@app.route('/course_create')
+def create_course():
+    return render_template('courses/course_create.html', courses=courses)
+
+@app.route('/course_create', methods=['POST'])
+def create_course_post():
+  course_type = request.form['course_type']
+  section_number = request.form['section_number']
+  start_date = request.form['start_date']
+  end_date = request.form['end_date']
+
+  course = Course(course_types[course_type], section_number, start_date, end_date)
+
+  # Save course to database
+
+  return redirect(url_for('index'))
+
 
 @app.route('/courses/new', methods=['GET', 'POST'])
 def courses_new():
