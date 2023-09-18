@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Grading App</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ url_for('index') }}">Grading App</a>
+    <a class="navbar-brand" href="#">Grading App</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="courseMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Courses
+          </a>
+          <div class="dropdown-menu" aria-labelledby="courseMenu">
+            <a class="dropdown-item" href="{{ url_for('create_course') }}">Create Course</a>
+            <a class="dropdown-item" href="#">View Courses</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <div class="container">
@@ -17,4 +42,5 @@
   </div>
 
 </body>
+
 </html>
